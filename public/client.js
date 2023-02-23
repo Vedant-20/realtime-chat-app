@@ -6,11 +6,19 @@ do {
     name = prompt('Please enter your name: ')
 } while(!name)
 
-textarea.addEventListener('keyup', (e) => {
-    if(e.key === 'Enter') {
-        sendMessage(e.target.value)
+function getmultiline() {
+    let lines = textarea.value.split('\n');
+    let result = '';
+    for (let i = 0; i < lines.length; i++) {
+        result += lines[i] + '<br>';
     }
-})
+    return result;
+}
+
+function send(){
+    let msg = textarea.value;
+    sendMessage(getmultiline());
+}
 
 function sendMessage(message) {
     let msg = {
